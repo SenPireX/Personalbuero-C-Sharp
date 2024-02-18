@@ -12,14 +12,26 @@ public class XunitProjectManager : DatabaseTest
     public XunitProjectManager(ITestOutputHelper output)
     {
         _output = output;
-        _db.Database.EnsureCreated();
-        
-        var pm = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
-            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
-        _db.Projectmanagers.Add(pm);
-        
-        //TODO
-        
+       /* _db.Database.EnsureCreated();
+
+        var office = new Models.Office("C# Programmers",
+            new Address(Street: "Kärtnerstraße 10", Zip: "1100", City: "Wien"));
+        _db.Offices.Add(office);
+
+        var project1 = new Project("Project A", new DateOnly(2024, 1, 1), new DateOnly(2024, 6, 30), true);
+        var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), false);
+        var project3 = new Project("Project C", new DateOnly(2024, 3, 10), new DateOnly(2024, 9, 15), true);
+        var project4 = new Project("Project D", new DateOnly(2024, 4, 20), new DateOnly(2024, 10, 25), false);
+        var project5 = new Project("Project E", new DateOnly(2024, 5, 5), new DateOnly(2024, 11, 20), true);
+        _db.Projects.AddRange(project1, project2, project3, project4, project5);
+
+        office.Enroll(new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien")));
+
+        office.Enroll(new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenplatz 9", "1100", "Wien")));
+
+        _db.SaveChanges();*/
     }
 
     [Fact]
@@ -78,7 +90,6 @@ public class XunitProjectManager : DatabaseTest
         Assert.Equal(1, totalProjects2);
     }
 
-
     [Fact]
     public void CompleteProject_CompletesProjects()
     {
@@ -103,8 +114,7 @@ public class XunitProjectManager : DatabaseTest
         Assert.True(project1.Completed);
         Assert.True(project2.Completed);
     }
-
-
+    
     [Fact]
     public void CountCompletedProjects_ReturnsCorrectAmountOfCompletedProjects()
     {

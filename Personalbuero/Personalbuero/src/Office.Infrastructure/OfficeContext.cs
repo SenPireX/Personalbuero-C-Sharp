@@ -24,7 +24,7 @@ public class OfficeContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //Relationships:
+        // Relationships:
         // Ein Office kann mehrere Mitarbeiter haben, und ein Mitarbeiter kann in einem Office sein                     one-to many 1:m
         // Ein Projekt kann mehrere Tasks haben, und ein Task kann in mehreren Projekten sein                           many-to-many m:m
         // Ein Projektmanager kann mehrere Projekte haben, und ein Projekt kann einem Projektmanager zugeteilt werden   one-to-many 1:m
@@ -32,13 +32,11 @@ public class OfficeContext : DbContext
 
         //Staff
         modelBuilder.Entity<Staff>().HasAlternateKey(staff => staff.Id);
-        modelBuilder.Entity<Staff>().HasKey(s => s.Id);
         modelBuilder.Entity<Staff>().OwnsOne(staff => staff.Address);
         //modelBuilder.Entity<Staff>().HasDiscriminator(staff => staff.Role);
-
+        
         //Office
-        modelBuilder.Entity<OfficeClass>().HasAlternateKey(o => o.AlternateId);
-        modelBuilder.Entity<OfficeClass>().HasKey(o => o.Id);
+        modelBuilder.Entity<OfficeClass>().HasAlternateKey(o => o.Id);
         modelBuilder.Entity<OfficeClass>().OwnsOne(o => o.Address);
 
         modelBuilder.Entity<OfficeClass>()
@@ -46,22 +44,22 @@ public class OfficeContext : DbContext
             .WithOne()
             .HasForeignKey(staff => staff.Id)
             .IsRequired();
-
-        //Project
-        modelBuilder.Entity<Project>().HasKey(project => project.ProjectId);
-        
-        //Task
-        modelBuilder.Entity<Task>().HasKey(task => task.TaskId);
-        
-        //modelBuilder.Entity<OfficeClass>().Ignore(o => o.DepartmentType);
         //modelBuilder.Entity<OfficeClass>().HasDiscriminator(office => office.DepartmentType);
 
-        //Projektmanager
-        /*modelBuilder.Entity<Projectmanager>().HasMany(p => p.Projects)
+        
+        //Projectmanager
+        modelBuilder.Entity<Projectmanager>()
+            .HasMany(p => p.Projects)
             .WithOne()
-            .HasForeignKey(p => p.ProjectId)
-            .IsRequired();*/
-
+            .HasForeignKey(p => p.Id)
+            .IsRequired();
+        
+        //Project
+        modelBuilder.Entity<Project>().HasAlternateKey(p => p.Id);
+        
+        //Task
+        modelBuilder.Entity<Task>().HasAlternateKey(t => t.Id);
+        
         //...
         modelBuilder.Entity<Employee>().HasBaseType<Staff>();
         modelBuilder.Entity<Freelancer>().HasBaseType<Staff>();

@@ -10,8 +10,7 @@ public class Freelancer : Staff
     private decimal HourlyRate { get; }
 
     public Freelancer(string firstName, string lastName, char geschlecht, DateOnly gebJahr, DateOnly eintrJahr,
-        Address address,
-        int hours, decimal hourlyRate)
+        Address address, int hours, decimal hourlyRate)
         : base(firstName, lastName, geschlecht, gebJahr, eintrJahr, address)
     {
         Hours = hours;

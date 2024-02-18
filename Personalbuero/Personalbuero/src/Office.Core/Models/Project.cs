@@ -2,16 +2,16 @@
 
 public class Project
 {
-    public int ProjectId { get; }
+    public Guid Id { get; }
     private string Name { get; }
     private DateOnly StartDate { get; }
     private DateOnly EndDate { get; }
     public List<Task> TaskList { get; }
     public bool Completed { get; set; }
-
-
+    
     public Project(string name, DateOnly startDate, DateOnly endDate, bool completed = false)
     {
+        Id = Guid.NewGuid();
         TaskList = new List<Task>();
         Name = name;
         StartDate = startDate;

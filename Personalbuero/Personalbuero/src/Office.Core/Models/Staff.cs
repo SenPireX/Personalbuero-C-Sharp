@@ -7,8 +7,7 @@ namespace Personalverwaltung.Office.Core.Models;
 public abstract class Staff : IComparable<Staff>
 {
     //----------------------------------Attributes----------------------------------
-    public int Id { get; }
-    public Guid AlternateId { get; }
+    public Guid Id { get; }
     public Type Role { get; }
 
     public string? FirstName
@@ -34,14 +33,13 @@ public abstract class Staff : IComparable<Staff>
     private char Gender { get; }
     private DateOnly BirthYear { get; set; }
     private DateOnly EntryYear { get; set; }
-
     public Address Address { get; set; }
 
     //----------------------------------Constructor----------------------------------
     public Staff(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear,
         Address address)
     {
-        AlternateId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         Role = GetType();
         FirstName = firstName;
         LastName = lastName;

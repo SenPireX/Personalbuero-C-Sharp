@@ -2,11 +2,12 @@
 
 public class Task
 {
-    public int TaskId;
+    public Guid Id { get; }
     private string Description { get; }
 
     public Task(string description)
     {
+        Id = Guid.NewGuid();
         Description = description;
     }
 

@@ -6,8 +6,7 @@ title: Personalbuero UML-Diagramm
 classDiagram
 class Staff {
     <<Abstract>>
-    +Id: int
-    +AlternateId: Guid
+    +Id: Guid
     +Role: Type
     +FirstName: string
     +LastName: string
@@ -64,8 +63,7 @@ class Projectmanager {
 
 class Office {
     <<Aggregate>>
-    +Id: int
-    +AlternateId: Guid
+    +Id: Guid
     +Name: string
     +DepartmentType: Type
     +Address: Address
@@ -99,7 +97,6 @@ class Task {
 }
 
 class Project {
-    +ProjectId: int
     -Name : string
     -StartDate : DateOnly
     -EndDate : DateOnly

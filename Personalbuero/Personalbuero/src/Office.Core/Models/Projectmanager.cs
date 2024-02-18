@@ -8,7 +8,7 @@ public class Projectmanager : Staff
 {
     private decimal BonusPerProject { get; }
     public List<Project> Projects { get; }
-
+    
     public Projectmanager(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear,
         Address address)
         : base(firstName, lastName, gender, birthYear, entryYear, address)

@@ -7,9 +7,7 @@ namespace Personalverwaltung.Office.Core.Models;
 public class Office
 {
     //----------------------------------Attributes---------------------------------
-
-    public int Id { get; }
-    public Guid AlternateId { get; }
+    public Guid Id { get; }
 
     public string? Name
     {
@@ -20,7 +18,7 @@ public class Office
     }
 
     private string? _name;
-    
+
     public Type DepartmentType { get; }
     public Address Address { get; set; }
 
@@ -32,7 +30,7 @@ public class Office
 
     public Office(string name, Address address)
     {
-        AlternateId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         DepartmentType = GetType();
         Name = name;
         Address = address;
