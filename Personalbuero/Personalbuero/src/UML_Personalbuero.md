@@ -6,14 +6,16 @@ title: Personalbuero UML-Diagramm
 classDiagram
 class Staff {
     <<Abstract>>
-    -Id: Guid
-    -Role: Type
+    +Id: int
+    +AlternateId: Guid
+    +Role: Type
     +FirstName: string
     +LastName: string
     -Gender: char
     -BirthYear: DateOnly
     -EntryYear: DateOnly
-    +Staff(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly)
+    +Address: Address
+    +Staff(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, address: Address)
     +CalculateInflationCompensation()* decimal
     +CalculateSalary() decimal
     +CalculateAge() int
@@ -23,7 +25,7 @@ class Staff {
 }
 
 class Employee {
-    +Employee(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly)
+    +Employee(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, address: Address)
     +CalculateInflationCompensation() decimal
     +ToString() string
 }
@@ -31,7 +33,7 @@ class Employee {
 class Freelancer {
     -Hours : int
     -HourlyRate : decimal
-    +Freelancer(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, hours: int, hourlyRate: decimal)
+    +Freelancer(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, address: Address, hours: int, hourlyRate: decimal)
     +CalculateInflationCompensation() decimal
     +CalculateSalary() decimal
     +ToString() string
@@ -40,7 +42,7 @@ class Freelancer {
 class Doctor {
     -WeeklyHours : int
     -FixedSalary : decimal
-    +Doctor(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, weeklyHours: int, fixedSalary: decimal)
+    +Doctor(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, address: Address, weeklyHours: int, fixedSalary: decimal)
     +CalculateInflationCompensation() decimal 
     +CalculateSalary() decimal
     +CalculateHourlyRate() decimal
@@ -50,7 +52,7 @@ class Doctor {
 class Projectmanager {
     -BonusPerProject: decimal
     +Projects: List<Project>
-    +Projectmanager(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly)
+    +Projectmanager(name: string, gender: char, birthYear: DateOnly, entryYear: DateOnly, address: Address)
     +CalculateInflationCompensation() decimal
     +CalculateSalary() decimal
     +AddProject(project: Project) void
@@ -61,10 +63,12 @@ class Projectmanager {
 }
 
 class Office {
-    <<Aggregate + Abstract>>
+    <<Aggregate>>
+    +Id: int
+    +AlternateId: Guid
     +Name: string
-    -DepartmentType: Type
-    -Address: Address
+    +DepartmentType: Type
+    +Address: Address
     +Staff: List<Staff>
     +Office(name: string, address: Address)
     +Enroll(staff: Staff) void
@@ -95,10 +99,11 @@ class Task {
 }
 
 class Project {
+    +ProjectId: int
     -Name : string
     -StartDate : DateOnly
     -EndDate : DateOnly
-    -TaskList : List<Task>
+    +TaskList : List<Task>
     +Completed : bool
     +Project(name: string, startDate: DateOnly, endDate: DateOnly, completed: bool)
     +AddTask(task: Task) void

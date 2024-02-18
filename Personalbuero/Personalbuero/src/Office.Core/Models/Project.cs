@@ -2,6 +2,7 @@
 
 public class Project
 {
+    public int ProjectId { get; }
     private string Name { get; }
     private DateOnly StartDate { get; }
     private DateOnly EndDate { get; }
@@ -16,6 +17,11 @@ public class Project
         StartDate = startDate;
         EndDate = endDate;
         Completed = completed;
+    }
+
+#pragma warning disable CS8618
+    protected Project()
+    {
     }
 
     public void AddTask(Task task)

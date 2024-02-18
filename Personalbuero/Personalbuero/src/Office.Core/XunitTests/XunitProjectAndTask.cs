@@ -7,24 +7,23 @@ namespace Personalverwaltung.Office.Core.XunitTests;
 
 public class XunitProjectAndTask
 {
-    
     private readonly ITestOutputHelper _output;
 
     public XunitProjectAndTask(ITestOutputHelper output)
     {
         _output = output;
     }
-    
+
     [Fact]
     public void AddTask_AddsTasks()
     {
         // Arrange
         var task1 = new Task("Implement Tests");
         var task2 = new Task("Implement new Classes");
-        
+
         var project1 = new Project("Project A", new DateOnly(2024, 1, 1), new DateOnly(2024, 6, 30), true);
         var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), false);
-        
+
 
         // Act
         project1.AddTask(task1);
@@ -36,7 +35,7 @@ public class XunitProjectAndTask
         _output.WriteLine("Added Tasks: " + project1.CountTasks());
         _output.WriteLine("Added Tasks: " + project2.CountTasks());
     }
-    
+
     [Fact]
     public void CountTasks_ReturnsCorrectAmountOfTasks()
     {
@@ -47,10 +46,10 @@ public class XunitProjectAndTask
         var task4 = new Task("Refactor Code");
         var task5 = new Task("Write Documentation");
         var task6 = new Task("Review Code");
-    
+
         var project1 = new Project("Project A", new DateOnly(2024, 1, 1), new DateOnly(2024, 6, 30), true);
         var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), false);
-    
+
 
         // Act
         project1.AddTask(task1);
@@ -66,10 +65,8 @@ public class XunitProjectAndTask
         // Assert
         Assert.Equal(3, tasksInProject1);
         Assert.Equal(3, tasksInProject2);
-        
+
         _output.WriteLine("Tasks: " + project1.CountTasks());
         _output.WriteLine("Tasks: " + project2.CountTasks());
     }
-
-    
 }

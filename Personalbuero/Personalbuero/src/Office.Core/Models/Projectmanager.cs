@@ -1,17 +1,25 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Personalverwaltung.Office.Core.Models;
 
+[Table("Staff")]
 public class Projectmanager : Staff
 {
     private decimal BonusPerProject { get; }
     public List<Project> Projects { get; }
 
-    public Projectmanager(string firstName, string lastName, char geschlecht, DateOnly gebJahr, DateOnly eintrJahr)
-        : base(firstName, lastName, geschlecht, gebJahr, eintrJahr)
+    public Projectmanager(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear,
+        Address address)
+        : base(firstName, lastName, gender, birthYear, entryYear, address)
     {
         Projects = new List<Project>();
         BonusPerProject = 100m;
+    }
+
+#pragma warning disable CS8618
+    protected Projectmanager()
+    {
     }
 
     public override decimal CalculateInflationCompensation()

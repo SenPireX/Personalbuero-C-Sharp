@@ -1,11 +1,19 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Personalverwaltung.Office.Core.Models;
 
+[Table("Staff")]
 public class Employee : Staff
 {
-    public Employee(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear)
-        : base(firstName, lastName, gender, birthYear, entryYear)
+    public Employee(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear,
+        Address address)
+        : base(firstName, lastName, gender, birthYear, entryYear, address)
+    {
+    }
+
+#pragma warning disable CS8618
+    protected Employee()
     {
     }
 

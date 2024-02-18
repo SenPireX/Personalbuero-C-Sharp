@@ -1,12 +1,15 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Personalverwaltung.Office.Core.Models;
 
+[Table("Staff")]
 public abstract class Staff : IComparable<Staff>
 {
     //----------------------------------Attributes----------------------------------
-    public Guid Id { get; }
-    private Type Role { get; }
+    public int Id { get; }
+    public Guid AlternateId { get; }
+    public Type Role { get; }
 
     public string? FirstName
     {
@@ -32,16 +35,25 @@ public abstract class Staff : IComparable<Staff>
     private DateOnly BirthYear { get; set; }
     private DateOnly EntryYear { get; set; }
 
+    public Address Address { get; set; }
+
     //----------------------------------Constructor----------------------------------
-    public Staff(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear)
+    public Staff(string firstName, string lastName, char gender, DateOnly birthYear, DateOnly entryYear,
+        Address address)
     {
-        Id = Guid.NewGuid();
+        AlternateId = Guid.NewGuid();
         Role = GetType();
         FirstName = firstName;
         LastName = lastName;
         Gender = gender;
         BirthYear = birthYear;
         EntryYear = entryYear;
+        Address = address;
+    }
+
+#pragma warning disable CS8618
+    protected Staff()
+    {
     }
 
     public abstract decimal CalculateInflationCompensation();

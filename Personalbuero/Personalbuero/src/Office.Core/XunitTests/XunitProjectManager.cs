@@ -1,16 +1,25 @@
 ﻿using Personalverwaltung.Office.Core.Models;
+using Personalverwaltung.Office.Core.Tests;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Personalverwaltung.Office.Core.XunitTests;
 
-public class XunitProjectManager
+public class XunitProjectManager : DatabaseTest
 {
     private readonly ITestOutputHelper _output;
 
     public XunitProjectManager(ITestOutputHelper output)
     {
         _output = output;
+        _db.Database.EnsureCreated();
+        
+        var pm = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+        _db.Projectmanagers.Add(pm);
+        
+        //TODO
+        
     }
 
     [Fact]
@@ -21,8 +30,11 @@ public class XunitProjectManager
         var project1 = new Project("Project A", new DateOnly(2024, 1, 1), new DateOnly(2024, 6, 30), true);
         var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), false);
 
-        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -46,8 +58,11 @@ public class XunitProjectManager
         var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), false);
         var project3 = new Project("Project C", new DateOnly(2024, 3, 10), new DateOnly(2024, 9, 15), false);
 
-        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
 
         // Act
@@ -71,8 +86,11 @@ public class XunitProjectManager
         var project1 = new Project("Project A", new DateOnly(2024, 1, 1), new DateOnly(2024, 6, 30), false);
         var project2 = new Project("Project B", new DateOnly(2024, 2, 15), new DateOnly(2024, 8, 31), true);
 
-        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         staff1.AddProject(project1);
         staff2.AddProject(project2);
@@ -97,8 +115,11 @@ public class XunitProjectManager
         var project4 = new Project("Project D", new DateOnly(2024, 4, 20), new DateOnly(2024, 10, 25), false);
         var project5 = new Project("Project E", new DateOnly(2024, 5, 5), new DateOnly(2024, 11, 20), true);
 
-        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         // Act
         staff1.AddProject(project1);
@@ -125,22 +146,24 @@ public class XunitProjectManager
         var project4 = new Project("Project D", new DateOnly(2024, 4, 20), new DateOnly(2024, 10, 25), false);
         var project5 = new Project("Project E", new DateOnly(2024, 5, 5), new DateOnly(2024, 11, 20), true);
 
-        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        
+        var staff1 = new Projectmanager("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Projectmanager("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
         staff1.AddProject(project1);
         staff2.AddProject(project2);
         staff1.AddProject(project4);
         staff2.AddProject(project3);
         staff2.AddProject(project5);
-        
+
         // Act
         var sal1 = staff1.CalculateSalary(); //PM1: 1500+ 50*4 + 1 * 100 = 1800
         var sal2 = staff2.CalculateSalary(); //PM2: 1500+ 50*3 + 2 * 100 = 1850
 
         // Assert
-        Assert.Equal(1800,sal1);
-        Assert.Equal(1850,sal2);
+        Assert.Equal(1800, sal1);
+        Assert.Equal(1850, sal2);
     }
-    
 }

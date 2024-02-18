@@ -7,7 +7,10 @@ namespace Personalverwaltung.Office.Infrastructure;
 
 public class OfficeContext : DbContext
 {
-    public OfficeContext(DbContextOptions opt) : base(opt){}
+    public OfficeContext(DbContextOptions opt) : base(opt)
+    {
+    }
+
     public DbSet<Staff> Staff => Set<Staff>();
     public DbSet<Doctor> Doctors => Set<Doctor>();
     public DbSet<Employee> Employees => Set<Employee>();
@@ -21,7 +24,50 @@ public class OfficeContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Relationships:
+        // Ein Office kann mehrere Mitarbeiter haben, und ein Mitarbeiter kann in einem Office sein                     one-to many 1:m
+        // Ein Projekt kann mehrere Tasks haben, und ein Task kann in mehreren Projekten sein                           many-to-many m:m
+        // Ein Projektmanager kann mehrere Projekte haben, und ein Projekt kann einem Projektmanager zugeteilt werden   one-to-many 1:m
+        // Eine Adresse kann einem Mitarbeiter bzw. Office gehören, und diese können nur eine Adresse haben.            one-to-one 1:1
+
+        //Staff
         modelBuilder.Entity<Staff>().HasAlternateKey(staff => staff.Id);
+        modelBuilder.Entity<Staff>().HasKey(s => s.Id);
+        modelBuilder.Entity<Staff>().OwnsOne(staff => staff.Address);
+        //modelBuilder.Entity<Staff>().HasDiscriminator(staff => staff.Role);
+
+        //Office
+        modelBuilder.Entity<OfficeClass>().HasAlternateKey(o => o.AlternateId);
+        modelBuilder.Entity<OfficeClass>().HasKey(o => o.Id);
+        modelBuilder.Entity<OfficeClass>().OwnsOne(o => o.Address);
+
+        modelBuilder.Entity<OfficeClass>()
+            .HasMany(o => o.Staff)
+            .WithOne()
+            .HasForeignKey(staff => staff.Id)
+            .IsRequired();
+
+        //Project
+        modelBuilder.Entity<Project>().HasKey(project => project.ProjectId);
+        
+        //Task
+        modelBuilder.Entity<Task>().HasKey(task => task.TaskId);
+        
+        //modelBuilder.Entity<OfficeClass>().Ignore(o => o.DepartmentType);
+        //modelBuilder.Entity<OfficeClass>().HasDiscriminator(office => office.DepartmentType);
+
+        //Projektmanager
+        /*modelBuilder.Entity<Projectmanager>().HasMany(p => p.Projects)
+            .WithOne()
+            .HasForeignKey(p => p.ProjectId)
+            .IsRequired();*/
+
+        //...
+        modelBuilder.Entity<Employee>().HasBaseType<Staff>();
+        modelBuilder.Entity<Freelancer>().HasBaseType<Staff>();
+        modelBuilder.Entity<Doctor>().HasBaseType<Staff>();
+        modelBuilder.Entity<Projectmanager>().HasBaseType<Staff>();
+        modelBuilder.Entity<SalesOffice>().HasBaseType<OfficeClass>();
+        modelBuilder.Entity<AdministrationOffice>().HasBaseType<OfficeClass>();
     }
-    
 }

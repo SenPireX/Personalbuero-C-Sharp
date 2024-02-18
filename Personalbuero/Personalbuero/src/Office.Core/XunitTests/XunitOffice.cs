@@ -18,7 +18,9 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
+
+        var staff = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         // Act
         office.Enroll(staff);
@@ -34,8 +36,13 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
         office.Enroll(staff1);
         office.Enroll(staff2);
 
@@ -52,8 +59,13 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
         office.Enroll(staff1);
         office.Enroll(staff2);
 
@@ -70,13 +82,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 120,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 120, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -99,13 +119,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 120,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 120, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -128,13 +156,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 120,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 120, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -156,13 +192,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -193,13 +237,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -230,13 +282,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         // Act
         office.Enroll(staff1);
@@ -264,13 +324,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         // Act
         office.Enroll(staff1);
@@ -298,13 +366,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         // Act
         office.Enroll(staff1); // 34
@@ -333,10 +409,15 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
 
         // Act
         office.Enroll(staff1);
@@ -354,8 +435,13 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
         office.Enroll(staff1);
         office.Enroll(staff2);
 
@@ -374,13 +460,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);
@@ -400,13 +494,21 @@ public class XunitOffice
     {
         // Arrange
         var office = new Models.Office("C# Programmers", new Address(Street: "Kärtnerstraße 10", "1100", "Wien"));
-        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1), new DateOnly(2020, 1, 1));
-        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1), new DateOnly(2021, 1, 1));
-        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15), new DateOnly(2010, 3, 20), 12,
-            1500);
-        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8), new DateOnly(2018, 6, 1), 100,
-            12);
-        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25), new DateOnly(2015, 8, 10));
+
+        var staff1 = new Employee("John", "Doe", 'M', new DateOnly(1990, 1, 1),
+            new DateOnly(2020, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff2 = new Employee("Jane", "Doe", 'F', new DateOnly(1995, 1, 1),
+            new DateOnly(2021, 1, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
+
+        var staff3 = new Doctor("Dr. Smith", "Specialty", 'M', new DateOnly(1985, 5, 15),
+            new DateOnly(2010, 3, 20), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 12, 1500);
+
+        var staff4 = new Freelancer("Alice", "Johnson", 'F', new DateOnly(1992, 10, 8),
+            new DateOnly(2018, 6, 1), new Address(Street: "Quellenstraße 11", "1100", "Wien"), 100, 12);
+
+        var staff5 = new Projectmanager("Jack", "Thompson", 'M', new DateOnly(1988, 3, 25),
+            new DateOnly(2015, 8, 10), new Address(Street: "Quellenstraße 11", "1100", "Wien"));
 
         office.Enroll(staff1);
         office.Enroll(staff2);

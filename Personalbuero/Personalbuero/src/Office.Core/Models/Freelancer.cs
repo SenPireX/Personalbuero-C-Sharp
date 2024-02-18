@@ -1,18 +1,26 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Personalverwaltung.Office.Core.Models;
 
+[Table("Staff")]
 public class Freelancer : Staff
 {
     private int Hours { get; }
     private decimal HourlyRate { get; }
 
     public Freelancer(string firstName, string lastName, char geschlecht, DateOnly gebJahr, DateOnly eintrJahr,
+        Address address,
         int hours, decimal hourlyRate)
-        : base(firstName, lastName, geschlecht, gebJahr, eintrJahr)
+        : base(firstName, lastName, geschlecht, gebJahr, eintrJahr, address)
     {
         Hours = hours;
         HourlyRate = hourlyRate;
+    }
+
+#pragma warning disable CS8618
+    protected Freelancer()
+    {
     }
 
     public override decimal CalculateInflationCompensation()

@@ -1,10 +1,15 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Personalverwaltung.Office.Core.Models;
 
+[Table("Office")]
 public class Office
 {
     //----------------------------------Attributes---------------------------------
+
+    public int Id { get; }
+    public Guid AlternateId { get; }
 
     public string? Name
     {
@@ -15,7 +20,8 @@ public class Office
     }
 
     private string? _name;
-    private Type DepartmentType { get; }
+    
+    public Type DepartmentType { get; }
     public Address Address { get; set; }
 
     private readonly List<Staff> _staff = new();
@@ -26,9 +32,15 @@ public class Office
 
     public Office(string name, Address address)
     {
+        AlternateId = Guid.NewGuid();
         DepartmentType = GetType();
         Name = name;
         Address = address;
+    }
+
+#pragma warning disable CS8618
+    protected Office()
+    {
     }
 
     //----------------------------------Methods----------------------------------
